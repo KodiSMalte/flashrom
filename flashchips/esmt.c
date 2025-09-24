@@ -122,7 +122,7 @@
 
 	{
 			.vendor		= "ESMT",
-			.name		= "F50L1G41LB(2M)",
+			.name		= "F50L1G41LB",
 			.bustype	= BUS_SPI,                     /* SPI-NAND device */
 			.manufacture_id	= ESMT_ID_SPI_NAND,                     /* maker code 0xC8 */
 			.model_id	= ESMT_F50L1G41LB,             /* define/alias in your headers */

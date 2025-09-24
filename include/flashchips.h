@@ -238,7 +238,7 @@
 #define ESMT_F25L128QA		0x4118
 #define ESMT_F49B002UA		0x00
 /* SPI-NAND */
-#define ESMT_F50L1G41LB     0x01    /* Device ID byte for F50L1G41LB(2M) */
+#define ESMT_F50L1G41LB     0x017f    /* Device ID byte for F50L1G41LB(2M) */
 
 
 /*
