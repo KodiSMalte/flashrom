@@ -119,3 +119,38 @@
 		.read		= READ_MEMMAPPED,
 		.voltage	= {4500, 5500},
 	},
+	
+	{
+			.vendor		= "ESMT",
+			.name		= "F50L1G41LB(2M)",
+			.bustype	= BUS_SPI,                     /* SPI-NAND device */
+			.manufacture_id	= ESMT_ID,                     /* maker code 0xC8 */
+			.model_id	= ESMT_F50L1G41LB,             /* define/alias in your headers */
+			.total_size	= 131072,                      /* KiB (128 MiB) */
+			/* datasheet: page = 2048 + 64 spare = 2112 bytes; use main page size where appropriate */
+			.page_size	= 2048,                        /* main data bytes per page */
+			.feature_bits	= FEATURE_OTP | FEATURE_EITHER_RESET,
+			.tested		= TEST_UNTESTED,
+			.probe		= PROBE_SPI_RDID,              /* standard SPI RDID (0x9F) */
+			.probe_timing	= TIMING_ZERO,
+			.block_erasers	=
+			{
+				{
+					/* 4 KiB erasable units (small blocks) */
+					.eraseblocks = { {4 * 1024, 32768} }, /* 128 MiB / 4 KiB = 32768 */
+					.block_erase = SPI_BLOCK_ERASE_20,    /* 0x20-style 4K erase */
+				}, {
+					/* 128 KiB blocks (primary NAND block size) */
+					.eraseblocks = { {128 * 1024, 1024} }, /* 128 MiB / 128 KiB = 1024 */
+					.block_erase = SPI_BLOCK_ERASE_D8,    /* D8h (128K) as in datasheet */
+				}
+			},
+			.printlock	= SPI_PRETTYPRINT_STATUS_REGISTER_PLAIN,
+			.unlock		= SPI_DISABLE_BLOCKPROTECT,
+			/* SPI-NAND programming sequence uses PROGRAM LOAD/EXECUTE (02h/10h) + internal ECC.
+			Use the standard chip read/write helpers in flashrom for SPI devices; adjust if your
+			tree has dedicated SPI_NAND handlers. */
+			.write		= SPI_CHIP_WRITE,
+			.read		= SPI_CHIP_READ,
+			.voltage	= {2700, 3600},
+		},

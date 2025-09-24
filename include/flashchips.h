@@ -225,7 +225,9 @@
 #define CATALYST_ID		0x31	/* Catalyst */
 #define CATALYST_CAT28F512	0xB8
 
-#define ESMT_ID			0x8C	/* Elite Semiconductor Memory Technology (ESMT) / EFST Elite Flash Storage */
+/* ESMT (Elite Semiconductor Memory Technology) */
+#define ESMT_ID_SPI_NOR     0x8C    /* SPI-NOR family */
+#define ESMT_ID_SPI_NAND    0xC8    /* SPI-NAND family */ 
 #define ESMT_F25L008A		0x2014
 #define ESMT_F25L32PA		0x2016
 #define ESMT_F25D08QA		0x2534
@@ -235,6 +237,8 @@
 #define ESMT_F25L64QA		0x4117
 #define ESMT_F25L128QA		0x4118
 #define ESMT_F49B002UA		0x00
+/* SPI-NAND */
+#define ESMT_F50L1G41LB     0x01    /* Device ID byte for F50L1G41LB(2M) */
 
 /*
  * EN25 chips are SPI, first byte of device ID is memory type,
